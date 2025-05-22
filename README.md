@@ -2,127 +2,133 @@
 ---
 
 ```markdown
-# Book Review API
+# 📚 Book Review API
 
-A RESTful API for managing books and reviews, built with Node.js, Express.js, MongoDB, and JWT authentication.
+A RESTful API for managing books and reviews, built using **Node.js**, **Express.js**, **MongoDB**, and **JWT authentication**.
 
 ---
 
 ## 🚀 Features
 
-- User signup and login with JWT authentication  
+- JWT-based user signup and login  
 - Add new books (authenticated users only)  
-- View all books with pagination and filters (author, genre)  
-- Get book details with average rating and paginated reviews  
-- Submit, update, and delete reviews (one review per user per book)  
-- Search books by title or author (partial and case-insensitive)  
+- View books with pagination and filter support (author, genre)  
+- Get detailed book view with average ratings and paginated reviews  
+- Submit, update, and delete reviews (one per user per book)  
+- Search books by title or author (case-insensitive & partial match)
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Technology    | Purpose                     |
-| ------------- | --------------------------- |
-| Node.js       | Backend runtime             |
-| Express.js    | Web framework               |
-| MongoDB       | Database                   |
-| Mongoose      | MongoDB ODM                 |
-| JSON Web Token| Authentication              |
-| bcrypt       | Password hashing            |
-| dotenv       | Environment variable config |
+| Technology      | Purpose                       |
+|----------------|-------------------------------|
+| Node.js         | Backend runtime               |
+| Express.js      | Server framework              |
+| MongoDB         | Database                      |
+| Mongoose        | MongoDB ODM                   |
+| JWT             | Authentication                |
+| bcrypt          | Password hashing              |
+| dotenv          | Environment variable config   |
 
 ---
 
-## 📂 Project Structure
+## 📁 Folder Structure
 
 ```
 
 book-review-api/
-├── mongodb/
-├── models/
-├── routes/
-├── index.js
-├── jwt.js
-├── .env
+├── controllers/         # Request handlers
+├── middleware/          # Auth middleware
+├── models/              # Mongoose models
+├── routes/              # Route definitions
+├── mongodb/             # DB connection setup
+├── index.js             # Entry point
+├── jwt.js               # JWT helper
+├── .env                 # Environment config
 └── README.md
 
-```
-
----
-
-## 🔑 Environment Variables
-
-Create a `.env`:
-
-```
-
-PORT=3000
-MONGO\_URL\_LOCAL=your\_mongodb\_connection\_string
-JWT\_SECRET=your\_jwt\_secret\_key
-
 ````
 
 ---
 
-## 💻 Setup & Run Locally
+## 🔐 Environment Variables
+
+Create a `.env` file in the root directory with the following keys:
+
+```env
+PORT=3000
+MONGO_URL_LOCAL=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+````
+
+---
+
+## 💻 Getting Started
 
 ```bash
+# Clone the repository
 git clone https://github.com/pranavv04/bookSystemAssignment.git
-cd book-review-api
-npm install
-cp  .env
-# Edit .env file with your configuration
-npm start
-````
 
-The server will run on `http://localhost:3000` (or your specified port).
+# Navigate to the project directory
+cd bookSystemAssignment
+
+# Install dependencies
+npm install
+
+# Start the server
+npm start
+```
+
+Server runs at: `http://localhost:3000`
 
 ---
 
 ## 📬 API Endpoints
 
-### Authentication
+### 🧑 Authentication
 
 | Method | Endpoint  | Description         |
 | ------ | --------- | ------------------- |
 | POST   | `/signup` | Register a new user |
 | POST   | `/login`  | Login and get a JWT |
 
-### Books
+### 📘 Books
 
 | Method | Endpoint     | Description                                 |
 | ------ | ------------ | ------------------------------------------- |
 | POST   | `/books`     | Add a new book (auth required)              |
-| GET    | `/books`     | Get all books (pagination, filters)         |
-| GET    | `/books/:id` | Get book details (average rating + reviews) |
+| GET    | `/books`     | Get all books (supports pagination/filters) |
+| GET    | `/books/:id` | Get book details including reviews & rating |
 
-### Reviews
+### 📝 Reviews
 
-| Method | Endpoint             | Description                     |
-| ------ | -------------------- | ------------------------------- |
+| Method | Endpoint              | Description                     |
+| ------ | --------------------- | ------------------------------- |
 | POST   | `/reviews/addreviews` | Submit a review (auth required) |
-| PUT    | `/reviews/:id`       | Update your review              |
-| DELETE | `/reviews/:id`       | Delete your review              |
+| PUT    | `/reviews/:id`        | Update your review              |
+| DELETE | `/reviews/:id`        | Delete your review              |
 
-### Search
+### 🔍 Search
 
-| Method | Endpoint         | Description                     |
-| ------ | ---------------- | ------------------------------- |
-| GET    | `/search?query=` | Search books by title or author |
-
----
-
-## 🧠 Design Decisions & Assumptions
-
-* Passwords are hashed with bcrypt before storing
-* JWT tokens expire after 1 hour for security
-
+| Method | Endpoint         | Description                         |
+| ------ | ---------------- | ----------------------------------- |
+| GET    | `/search?query=` | Search by title or author (partial) |
 
 ---
 
-## 📋 Database Models (Summary)
+## 📐 Design Decisions & Assumptions
 
-**User**
+* Passwords are hashed using `bcrypt`
+* JWT tokens expire in 1 hour
+* One review per user per book
+* All data is validated before storing
+
+---
+
+## 🧾 Data Models
+
+### 👤 User
 
 ```json
 {
@@ -132,18 +138,18 @@ The server will run on `http://localhost:3000` (or your specified port).
 }
 ```
 
-**Book**
+### 📖 Book
 
 ```json
 {
   "title": "String",
   "author": "String",
   "genre": "String",
-  "description": "String",
+  "description": "String"
 }
 ```
 
-**Review**
+### ⭐ Review
 
 ```json
 {
@@ -156,7 +162,7 @@ The server will run on `http://localhost:3000` (or your specified port).
 
 ---
 
-## 🧪 Example API Request
+## 🧪 Example Request (Signup)
 
 ```bash
 curl -X POST http://localhost:3000/signup \
@@ -166,9 +172,18 @@ curl -X POST http://localhost:3000/signup \
 
 ---
 
-## 📁 Submission
+## 📤 Submission
 
-* The `.env` file is excluded for security reasons. Please create your own `.env` file as per `.env.example`.
-* [GitHub Repository Link](https://github.com/pranavv04/bookSystemAssignment)
+* The `.env` file is excluded via `.gitignore` for security.
+* Clone and configure `.env` manually using the example above.
+* 📎 [GitHub Repository](https://github.com/pranavv04/bookSystemAssignment)
+
+---
+
+> ✅ All endpoints tested via Postman
+> 📌 Code is modular, readable, and documented
+
+```
+
 
 
