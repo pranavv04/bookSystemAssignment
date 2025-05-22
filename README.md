@@ -12,9 +12,7 @@ A RESTful API for managing books and reviews, built using **Node.js**, **Express
 
 - JWT-based user signup and login  
 - Add new books (authenticated users only)  
-- View books with pagination and filter support (author, genre)  
-- Get detailed book view with average ratings and paginated reviews  
-- Submit, update, and delete reviews (one per user per book)  
+- View books with pagination and filter support (author, genre)   
 - Search books by title or author (case-insensitive & partial match)
 
 ---
@@ -128,7 +126,6 @@ Server runs at: `http://localhost:3000`
 
 * Passwords are hashed using `bcrypt`
 * JWT tokens expire in 1 hour
-* One review per user per book
 * All data is validated before storing
 
 ---
