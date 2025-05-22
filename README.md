@@ -190,7 +190,7 @@ curl -X POST http://localhost:3000/signup \
 > ✅ All endpoints tested via Postman
 > 📌 Code is modular, readable, and documented
 
-```
+
 
 
 
