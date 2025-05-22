@@ -35,20 +35,27 @@ A RESTful API for managing books and reviews, built using **Node.js**, **Express
 
 ## 📁 Folder Structure
 
-```
-
+```bash
 book-review-api/
-├── controllers/         # Request handlers
-├── middleware/          # Auth middleware
-├── models/              # Mongoose models
-├── routes/              # Route definitions
-├── mongodb/             # DB connection setup
-├── index.js             # Entry point
-├── jwt.js               # JWT helper
-├── .env                 # Environment config
-└── README.md
+├── db/                   # MongoDB connection logic
+│   └── mongodb.js
+│
+├── models/               # Mongoose models
+│   ├── Book.js
+│   ├── User.js
+│   └── Review.js
+│
+├── routes/               # API route handlers
+│   ├── book.js
+│   ├── user.js
+│   └── review.js
+│
+├── index.js              # Main entry point
+├── jwt.js                # JWT token creation logic
+├── .env                  # Environment variables (not committed)
+├── .gitignore            # Ignore node_modules, .env, etc.
+└── README.md             # Project documentation
 
-````
 
 ---
 
